@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { Injectable } from '@nestjs/common'
+import { Prisma } from '@prisma/client'
+import { PrismaService } from 'src/prisma/prisma.service'
 
 @Injectable()
 export class AuthorsService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   create(createAuthorDto: Prisma.AuthorsCreateInput) {
     return this.prisma.authors.create({
@@ -13,19 +13,21 @@ export class AuthorsService {
   }
 
   findAll() {
-    return this.prisma.authors.findMany();
+    return this.prisma.authors.findMany()
   }
-
 
   findOne(AuthorsWhereUniqueInput: Prisma.AuthorsWhereUniqueInput) {
-    return this.prisma.books.findUnique({ where: AuthorsWhereUniqueInput });
+    return this.prisma.books.findUnique({ where: AuthorsWhereUniqueInput })
   }
 
-  update(where: Prisma.AuthorsWhereUniqueInput, data: Prisma.AuthorsUpdateInput) {
+  update(
+    where: Prisma.AuthorsWhereUniqueInput,
+    data: Prisma.AuthorsUpdateInput
+  ) {
     return this.prisma.authors.update({
       data,
       where
-    });
+    })
   }
 
   remove(where: Prisma.AuthorsWhereUniqueInput) {

@@ -1,6 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
-import { BooksService } from './books.service';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete
+} from '@nestjs/common'
+import { Prisma } from '@prisma/client'
+import { BooksService } from './books.service'
 
 @Controller('books')
 export class BooksController {
@@ -8,26 +16,29 @@ export class BooksController {
 
   @Post()
   create(@Body() createBookDto: Prisma.BooksUncheckedCreateInput) {
-    return this.booksService.create(createBookDto);
+    return this.booksService.create(createBookDto)
   }
 
   @Get()
   findAll() {
-    return this.booksService.findAll();
+    return this.booksService.findAll()
   }
 
   @Get(':id')
   findOne(@Param('id') id: Prisma.BooksWhereUniqueInput) {
-    return this.booksService.findOne({id: +id});
+    return this.booksService.findOne({ id: +id })
   }
 
   @Patch(':id')
-  update(@Param('id') id: Prisma.BooksWhereUniqueInput, @Body() updateBookDto: Prisma.BooksUpdateInput) {
-    return this.booksService.update({id: +id}, updateBookDto);
+  update(
+    @Param('id') id: Prisma.BooksWhereUniqueInput,
+    @Body() updateBookDto: Prisma.BooksUpdateInput
+  ) {
+    return this.booksService.update({ id: +id }, updateBookDto)
   }
 
   @Delete(':id')
   remove(@Param('id') id: Prisma.BooksWhereUniqueInput) {
-    return this.booksService.remove({id: +id});
+    return this.booksService.remove({ id: +id })
   }
 }
